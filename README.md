@@ -1,7 +1,7 @@
 # RGREP
 
 
-*Minimalistic fork of GREP (earch globally for lines matching the regular expression, and print them) utility, by written on Rust*
+*Minimalistic fork of GREP (search globally for lines matching the regular expression, and print them) utility, by written on Rust*
 
 
 Dependencies
