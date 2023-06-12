@@ -5,6 +5,7 @@ use std::fs;
 use std::process;
 
 
+
 pub struct Line {
     pub string: String,
     pub number: usize,
@@ -30,6 +31,14 @@ pub struct Config {
 pub fn parse_args() -> Result<Config, io::ErrorKind> { // (query, file_path)
     let args: Vec<String> = env::args().collect();
     let length = args.len();
+    if length > 2 {
+        match args[1].as_str() {
+            "--help" | "-h" => {
+                print_help(); process::exit(-1);
+            }
+            _ => {}
+        }
+    }
     if length < 3 {
         return Err(io::ErrorKind::InvalidInput);
     }
@@ -142,4 +151,18 @@ pub fn get_results(config: &Config) -> Vec<Line> {
     }
     search(&config.query, &contents)
 }
+
+
+
+
+fn print_help() {
+    println!("rgrep - rust grep");
+    println!("Minimalistic fork of GREP (search globally for lines matching the regular expression, and print them) utility, by written on Rust.");
+    println!("\nUsage: ");
+    println!("  $ rgrep %find% %file% %optional: [-C/-c/--any-case/--ignore-case]%");
+}
+
+
+
+
 
