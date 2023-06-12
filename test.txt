@@ -1,0 +1,16 @@
+
+class TestClass (private val info: String) {
+    fun foo() {
+        println("Hello, World!")
+    }
+    fun toString(): String {
+        return "$info \{\} // kotlin class code for rgrep testing"
+    }
+}
+
+fun main() {
+    val test = TestClass("'val test'")
+    test.foo()
+    println("info: ${test.toString()}")
+}
+
