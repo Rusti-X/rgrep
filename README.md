@@ -17,7 +17,7 @@ Executable file: target/release/rgrep
 
 Usage
 ============
-$ rgrep $find $file  
+$ rgrep  %find%  %file%  %optional: [-C/-c/--any-case/--ignore-case]%
 
 
 
