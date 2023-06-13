@@ -6,7 +6,7 @@
 
 Dependencies
 =============
-Rustc || Cargo  
+[ Cargo, regex(in Cargo.toml) ]  
 
 
 Installation
