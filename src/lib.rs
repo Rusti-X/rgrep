@@ -3,6 +3,7 @@ use std::fmt::Display;
 use std::io;
 use std::fs;
 use std::process;
+use regex::Regex;
 
 
 
@@ -83,8 +84,10 @@ pub fn search_ignored_case(
 
     let mut line_number: usize = 1;
 
+    let re = Regex::new(&query.to_lowercase()).expect("Invalid regular expression");
+
     for line in contents.lines() {
-        if line.to_lowercase().contains(&query) {
+        if re.is_match(&line.to_lowercase()) {
             results.push(
                 Line::new(line, line_number)
             );
@@ -99,13 +102,14 @@ pub fn search(
     query: &str,
     contents: &str,
 ) -> Vec<Line> {
-    let query = query;
     let mut results: Vec<Line> = Vec::new();
 
     let mut line_number: usize = 1;
 
+    let re = Regex::new(query).expect("Invalid regular expression");
+
     for line in contents.lines() {
-        if line.contains(&query) {
+        if re.is_match(line) {
             results.push(
                 Line::new(line, line_number)
             );
